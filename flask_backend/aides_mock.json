@@ -1,0 +1,20 @@
+{"fara":   {
+  "dept": "06",
+  "age": "25",
+  "boursier": "oui",
+  "alternant": "non"
+},
+  "crous":   {
+  "dept": "",
+  "age": "25",
+  "boursier": "oui",
+  "alternant": "non"
+},
+  ,
+  "aide mobilités":   {
+  "dept": "",
+  "age": "30",
+  "boursier": "oui",
+  "alternant": "oui"
+}
+}
