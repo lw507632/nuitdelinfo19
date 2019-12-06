@@ -40,13 +40,13 @@ def aides():
     if request.method == "POST":
         req_data = request.get_json()
         tmp = set()
-        res = {'body':[]}
+        res = {}
         for k in help_programs.keys():
             for key, item in help_programs[k].items():
                 for key2, item2 in req_data.items():
                     if item==item2:
                         tmp.add(k)
-        res['body'].extend(list(tmp))
+        res['body'] = str(list(tmp))
         res['status'] = 200
         return res
 
