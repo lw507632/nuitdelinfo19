@@ -1,6 +1,59 @@
-version: '2'
+version: '3'
+
 services:
-    web:
-        build: flask_backend/.
-        ports:
-            - "5000:5000"
+  db:
+    image: postgres:latest
+    networks:
+      - tracker-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=postgres
+
+  web:
+    build: flask_backend/.
+    ports:
+      - "5000:5000"
+
+  eureka-server:
+    container_name: eurekaserver
+    image: eureka-server:latest
+    expose:
+      - 8761
+    ports:
+      - "8761:8761"
+    networks:
+      - tracker-postgres
+
+  help-service:
+    container_name: helpservice
+    image: helpservice:latest
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    links:
+      - db
+    depends_on:
+      - db
+      - eureka-server
+    networks:
+      - tracker-postgres
+
+  eureka-feign-client:
+    container_name: eureka-feign-client
+    image: eureka-feign-client:latest
+    expose:
+      - 8090
+    ports:
+      - "8090:8090"
+    depends_on:
+      - eureka-server
+    networks:
+      - tracker-postgres
+
+networks:
+  tracker-postgres:
+    external: true

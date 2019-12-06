@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-cloud-eureka-feign-client
+
+server:
+  port: 8090
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://eurekaserver:8761/eureka}
