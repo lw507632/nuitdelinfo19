@@ -27,13 +27,14 @@ def aides():
     if request.method == "POST":
         req_data = request.get_json()
         tmp = set()
-        res = {'aides':[]}
+        res = {'body':[]}
         for k in aides_mock.keys():
             for key, item in aides_mock[k].items():
                 for key2, item2 in req_data.items():
                     if item==item2:
                         tmp.add(k)
-        res['aides'].extend(list(tmp))
+        res['body'].extend(list(tmp))
+        res['status'] = 200
         return res
 
 if __name__ == '__main__':
