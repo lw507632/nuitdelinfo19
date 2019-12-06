@@ -1,14 +1,6 @@
 from flask import Flask, json, Response, request
-import py_eureka_client.eureka_client as eureka_client
 
 app = Flask(__name__)
-
-your_rest_server_port = 5000
-# The flowing code will register your server to eureka server and also start to send heartbeat every 30 seconds
-eureka_client.init(eureka_server="http://eureka-server:8761",
-                   app_name="python_flask_app",
-                   instance_port=your_rest_server_port)
-
 with open('aides_mock.json') as f:
     aides_mock = json.load(f)
 
@@ -30,8 +22,6 @@ def oui_non():
 
 @app.route("/aides", methods=["POST"])
 def aides():
-    
-
     if request.method == "POST":
         req_data = request.get_json()
         tmp = set()
