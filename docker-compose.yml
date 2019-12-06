@@ -16,6 +16,10 @@ services:
     build: flask_backend/.
     ports:
       - "5000:5000"
+    depends_on:
+      - eureka-server
+    networks:
+      - tracker-postgres
 
   eureka-server:
     container_name: eurekaserver
