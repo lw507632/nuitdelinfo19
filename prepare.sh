@@ -21,5 +21,6 @@ docker build -t eureka-feign-client:latest .
 
 # RUN DOCKER-COMPOSE
 cd ..
+docker-compose build
 echo "Running Docker compose"
 docker-compose up

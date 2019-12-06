@@ -33,6 +33,27 @@ public class HelpServiceApplication implements GreetingController {
 
     @Override
     public String greeting() {
-        return String.format("Hello from '%s'!", eurekaClient.getApplication(appName).getName());
+        return helpPrograms;
     }
+
+    private static final String helpPrograms = "{\"fara\":   {\n" +
+            "  \"dept\": \"06\",\n" +
+            "  \"age\": \"25\",\n" +
+            "  \"boursier\": \"oui\",\n" +
+            "  \"alternant\": \"non\"\n" +
+            "},\n" +
+            "  \"crous\":   {\n" +
+            "  \"dept\": \"\",\n" +
+            "  \"age\": \"25\",\n" +
+            "  \"boursier\": \"oui\",\n" +
+            "  \"alternant\": \"non\"\n" +
+            "},\n" +
+            " \n" +
+            "  \"aide mobilités\":   {\n" +
+            "  \"dept\": \"\",\n" +
+            "  \"age\": \"30\",\n" +
+            "  \"boursier\": \"oui\",\n" +
+            "  \"alternant\": \"oui\"\n" +
+            "}\n" +
+            "}";
 }

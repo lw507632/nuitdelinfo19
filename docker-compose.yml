@@ -16,8 +16,6 @@ services:
     build: flask_backend/.
     ports:
       - "5000:5000"
-    depends_on:
-      - eureka-server
     networks:
       - tracker-postgres
 
@@ -42,18 +40,6 @@ services:
       - db
     depends_on:
       - db
-      - eureka-server
-    networks:
-      - tracker-postgres
-
-  eureka-feign-client:
-    container_name: eureka-feign-client
-    image: eureka-feign-client:latest
-    expose:
-      - 8090
-    ports:
-      - "8090:8090"
-    depends_on:
       - eureka-server
     networks:
       - tracker-postgres
